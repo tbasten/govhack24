@@ -46,3 +46,7 @@ In addition to IoT data, OverSITE supports community involvement by allowing res
 ## Conclusion
 
 OverSITE is a platform designed to support Australian councils in creating more liveable cities by using IoT data to inform decision-making, enhance community engagement, and streamline maintenance operations. By providing actionable insights through both sensor data and community reports, OverSITE ensures that public assets are maintained effectively, contributing to the overall liveability of urban spaces across Australia.
+
+
+# Screenshots
+![Project Homepage](_EVIDENCE/Project.jpeg)
