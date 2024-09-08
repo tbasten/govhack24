@@ -46,26 +46,46 @@
         {% set next_month_change = (range(50, 300) | random) | int %}
         {% set next_month_change_percent = (range(1, 100) | random) | int %}
         <div class="col-md-6 mb-4">
-          <div class="card">
+          <div class="card text-center">
             <div class="card-header">
               <h5 class="card-title">Last Month</h5>
             </div>
-            <div class="card-body">
-              <p class="card-text"><h1 class="display-1">{{last_month}}</h1></p>
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <p class="card-text"><h1 class="display-1">{{last_month}}</h1></p>
+                  <p class="card-text"><h5>Visitors</h5></p>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <canvas id="usageChart1_1" width="400" ></canvas>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        
         <div class="col-md-6 mb-4">
-          <div class="card">
+          <div class="card text-center">
             <div class="card-header">
-              <h5 class="card-title">Next Month</h5>
+              <h5 class="card-title">Next Month Predicted</h5>
             </div>
-            <div class="card-body">
-              <p class="card-text"><h1 class="display-1">{{next_month}}</h1></p>
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <p class="card-text"><h1 class="display-1">{{next_month}}</h1></p>
+                  <p class="card-text"><h5>Visitors</h5></p>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <canvas id="usageChart1_2" width="400" ></canvas>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <div class="row">
         <div class="col-md-12">
           <table id="asset-list" class="table table-striped table-bordered" style="width:100%">
@@ -147,7 +167,7 @@
               {% for site,locations in data.items() %}
               {% for location,assets in locations.items() %}
               {% for asset,sensors in assets.items() %}
-              <a href="#" class="list-group-item list-group-item-action">
+              <a href="#" class="list-group-item list-group-item-action" data-asset="{{asset}}">
                 <i class="bi-thermometer"></i> {{asset}}
               </a>
               {% endfor %}
@@ -190,6 +210,112 @@
       new Chart(ctx, {
         type: 'bar',
         data: chartData,
+        options: {
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMin: 0,
+              max: 100,
+              ticks: {
+                stepSize: 10,
+                color: '#E4E6Eb'
+              }
+            },
+            x: {
+              stacked: false,
+              categoryPercentage: 1.0,
+              barPercentage: 0.7,
+              ticks: {
+                color: '#E4E6Eb'
+              },
+              grid: {
+                display: false
+              }
+            }
+          }
+        }
+      })
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      const numberStringArray = Array.from({length: 31}, (_, i) => (i + 1).toString());
+      function getRandomArray(length) {
+        const result = [];
+        for (let i = 0; i < length; i++) {
+          result.push(Math.floor(Math.random() * 51 + 50));
+        }
+        return result;
+      }
+      months = numberStringArray;
+      rnd_data1 = getRandomArray(31);
+      rnd_data2 = getRandomArray(31);
+
+      const chartData1 = {
+        labels: months,
+        datasets: [
+          {
+            label: 'Volume',
+            data: rnd_data1,
+            backgroundColor: 'rgb(80, 179, 167,1)',
+            borderColor: 'rgb(228, 230, 235,1)'
+          }
+        ]
+      }
+      const ctx1 = document.getElementById('usageChart1_1').getContext('2d')
+      new Chart(ctx1, {
+        type: 'bar',
+        data: chartData1,
+        options: {
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMin: 0,
+              max: 100,
+              ticks: {
+                stepSize: 10,
+                color: '#E4E6Eb'
+              }
+            },
+            x: {
+              stacked: false,
+              categoryPercentage: 1.0,
+              barPercentage: 0.7,
+              ticks: {
+                color: '#E4E6Eb'
+              },
+              grid: {
+                display: false
+              }
+            }
+          }
+        }
+      })
+      const chartData2 = {
+        labels: months,
+        datasets: [
+          {
+            label: 'Volume',
+            data: rnd_data2,
+            backgroundColor: 'rgb(80, 179, 167,1)',
+            borderColor: 'rgb(228, 230, 235,1)'
+          }
+        ]
+      }
+      const ctx2 = document.getElementById('usageChart1_2').getContext('2d')
+      new Chart(ctx2, {
+        type: 'bar',
+        data: chartData2,
         options: {
           plugins: {
             legend: {
