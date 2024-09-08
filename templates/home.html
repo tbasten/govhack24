@@ -19,13 +19,13 @@
         crossorigin="anonymous"></script>
         <script src="https://unpkg.com/simple-jscalendar@1.4.5/source/jsCalendar.min.js" integrity="sha384-F3Wc9EgweCL3C58eDn9902kdEH6bTDL9iW2JgwQxJYUIeudwhm4Wu9JhTkKJUtIJ" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/simple-jscalendar@1.4.5/source/jsCalendar.min.css" integrity="sha384-CTBW6RKuDwU/TWFl2qLavDqLuZtBzcGxBXY8WvQ0lShXglO/DsUvGkXza+6QTxs0" crossorigin="anonymous">
-
+<link rel="stylesheet" href="style.css">
                 
 
 </head>
 
 <body>
-    <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" background-color="#2a5d6a">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">OverSITE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -141,7 +141,7 @@
             <h1 class="display-6">Maintenance Window Finder</h1>
             <div class="col">
                 <div>
-                    <h5>Asset</h5>
+                    <h5 class="sub-header">Asset</h5>
                     <ul class="list-group">
                         <li class="list-group-item active" aria-current="true">BBQ West</li>
                         <li class="list-group-item">BBQ East</li>
@@ -152,14 +152,14 @@
             </div>
             <div class="col">
                 <div>
-                    <h5>Calendar</h5>
+                    <h5 class="sub-header">Calendar</h5>
                     <div class="auto-jsCalendar clean-theme" data-navigator="false"></div>
 
                 </div>
             </div>
             <div class="col">
                 <div class="col-md-12 mb-4">
-                    <h5>Predicted Usage</h5>
+                    <h5 class="sub-header">Predicted Usage</h5>
                     <canvas id="usageChart" width="400" height="315"></canvas>
                 </div>
             </div>
