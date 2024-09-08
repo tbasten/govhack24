@@ -64,7 +64,7 @@ body {
     --bs-table-striped-bg: rgba(var(--bs-emphasis-color-rgb), 0.05);
     --bs-table-active-color: var(--bs-emphasis-color);
     --bs-table-active-bg: rgba(var(--bs-emphasis-color-rgb), 0.1);
-    --bs-table-hover-color: var(--bs-emphasis-color);
+    --bs-table-hover-color: #4ab9a9;
     --bs-table-hover-bg: rgba(var(--bs-emphasis-color-rgb), 0.075);
     width: 100%;
     margin-bottom: 1rem;
@@ -82,14 +82,18 @@ body {
     --bs-list-group-item-padding-y: 0.5rem;
     --bs-list-group-action-color: var(--bs-secondary-color);
     --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-    --bs-list-group-action-hover-bg: var(--bs-tertiary-bg);
+    --bs-list-group-action-hover-bg: #4ab9a9;
     --bs-list-group-action-active-color: var(--bs-body-color);
-    --bs-list-group-action-active-bg: var(--bs-secondary-bg);
+    --bs-list-group-action-active-bg: #4ab9a9;
     --bs-list-group-disabled-color: var(--bs-secondary-color);
     --bs-list-group-disabled-bg: var(--bs-body-bg);
     --bs-list-group-active-color: #E4E6Eb;
     --bs-list-group-active-bg: #2a5d6a;
     --bs-list-group-active-border-color: #2a5d6a;
+    --bs-list-group-action-hover-bg: #4ab9a9;
+    --bs-list-group-action-hover-color: #3f414a;
+    --bs-list-group-active-bg:#4ab9a9;
+    --bs-list-group-active-color:#3f414a;
     display: flex;
     flex-direction: column;
     padding-left: 0;
@@ -101,3 +105,8 @@ body {
     background-color: #3a4f62;
     color: #E4E6Eb ;
 }
+
+img {
+    width: 40px;
+    height: 40px;
+  }

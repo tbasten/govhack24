@@ -13,12 +13,13 @@
     <script src="https://unpkg.com/simple-jscalendar@1.4.5/source/jsCalendar.min.js" integrity="sha384-F3Wc9EgweCL3C58eDn9902kdEH6bTDL9iW2JgwQxJYUIeudwhm4Wu9JhTkKJUtIJ" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/simple-jscalendar@1.4.5/source/jsCalendar.min.css" integrity="sha384-CTBW6RKuDwU/TWFl2qLavDqLuZtBzcGxBXY8WvQ0lShXglO/DsUvGkXza+6QTxs0" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   </head>
 
   <body>
     <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" background-color="#2a5d6a">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">OverSITE</a>
+        <a class="navbar-brand" href="#"><img src="OverSITE.png"></img> OverSITE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
@@ -142,12 +143,17 @@
         <div class="col">
           <div>
             <h5 class="sub-header">Asset</h5>
-            <ul class="list-group">
-              <li class="list-group-item active" aria-current="true">BBQ West</li>
-              <li class="list-group-item">BBQ East</li>
-              <li class="list-group-item">Information Centre</li>
-              <li class="list-group-item">Scenic Reserve Trail</li>
-            </ul>
+            <div class="list-group">
+              {% for site,locations in data.items() %}
+              {% for location,assets in locations.items() %}
+              {% for asset,sensors in assets.items() %}
+              <a href="#" class="list-group-item list-group-item-action">
+                <i class="bi-thermometer"></i> {{asset}}
+              </a>
+              {% endfor %}
+              {% endfor %}
+              {% endfor %}
+            </div>
           </div>
         </div>
         <div class="col">
@@ -214,6 +220,20 @@
           }
         }
       })
-    })
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const listItems = document.querySelectorAll('.list-group-item');
+    
+      listItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault(); 
+          listItems.forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+          this.setAttribute('aria-current', 'page');
+        });
+      });
+    });
   </script>
 </html>
