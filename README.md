@@ -49,6 +49,7 @@ OverSITE is a platform designed to support Australian councils in creating more 
 
 # Screenshots
 ![Project Homepage](_EVIDENCE/Project.jpeg)
-![Project Homepage](_EVIDENCE/Project.jpeg)
-![Mobile View 1](_EVIDENCE/Josh Evidence/iPhone BBQ 2.png)
-![Mobile View 2](_EVIDENCE/Josh Evidence/iPhone BBQ 3.png)
+![Mobile View 1](_EVIDENCE/iPhoneBBQ1.jpeg)
+![Mobile View 2](_EVIDENCE/iPhoneBBQ2.jpeg)
+![Mobile View 3](_EVIDENCE/iPhoneBBQ3.jpeg)
+![Mobile View 4](_EVIDENCE/iPhoneBBQ4.jpeg)
