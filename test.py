@@ -1,13 +1,39 @@
-import flask
-from flask import render_template, redirect, url_for
 import pandas as pd
+sensor_map = {
+    "Mary Cairncross Scenic Reserve": {
+        "BBQ_East": {
+            "BBQ_East_A001" : {
+                "temp": [
+                    "r718b140-06f8" 
+                ]
+            },
+            "BBQ_East_A002" : {
+                "temp": [
+                    "r718b140-06fc" 
+                ]
+            },
+            "BBQ_East_A003" : {
+                "temp": [
+                    "r718b140-06f9"   
+                ]
+            }
+        },
+        "BBQ_West": {
+            "BBQ_West_A001": {
+                "temp": [
+                    "r718b140-06f7"
+                ]
+            },
+            "BBQ_West_A002": {
+                "temp": [
+                    "r718b140-06fa"
+                ]
+            }
+        }
+    }
+}
 
-
-app = flask.Flask(__name__, static_url_path='',
-            static_folder='static',
-            template_folder='templates')
-app.config["DEBUG"] = False
-
+df = pd.read_csv('data/r718b140-06f7-BBQ Temp.csv')
 
 def get_all_data_with_sensor(df, sensor_id):
     mask = df['dev_id'].astype(str).str.contains(sensor_id)
@@ -52,53 +78,15 @@ def get_nested_structure(df, sensor_map):
     
     return dict(nested_structure)
 
-sensor_map = {
-    "Mary Cairncross Scenic Reserve": {
-        "BBQ_East": {
-            "BBQ_East_A001" : {
-                "temp": [
-                    "r718b140-06f8" 
-                ]
-            },
-            "BBQ_East_A002" : {
-                "temp": [
-                    "r718b140-06fc" 
-                ]
-            },
-            "BBQ_East_A003" : {
-                "temp": [
-                    "r718b140-06f9"   
-                ]
-            }
-        },
-        "BBQ_West": {
-            "BBQ_West_A001": {
-                "temp": [
-                    "r718b140-06f7"
-                ]
-            },
-            "BBQ_West_A002": {
-                "temp": [
-                    "r718b140-06fa"
-                ]
-            }
-        }
-    }
-}
+result = get_nested_structure(df, sensor_map)
 
-df = pd.read_csv('data/r718b140-06f7-BBQ Temp.csv')
-
-data = get_nested_structure(df, sensor_map)
-
-@app.route("/")
-def home():
-    return render_template("home.html", data = data)
-@app.route("/test")
-def admin():
-    
-    data={'id':1, 'name':'Josh'}
-    return render_template("test.html", data = sensor_map)
-
-
-if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=5000)
+print(type(result))
+# for location, location_data in sensor_map.items():
+#     for asset_location,assets in location_data.items():
+#         for asset, sensors in assets.items():
+#             for sensor_type,sensors in sensors.items():
+#                 for sensor_id in sensors:
+#                     result = get_all_data_with_sensor(df, sensor_id)
+#                     results = pd.DataFrame(result,columns=['datetime','temperature','temperatureDiff'])
+#                     results.sort_values('datetime')
+                    

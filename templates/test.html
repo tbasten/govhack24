@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset List</title>
+</head>
+<body>
+    <div class="container">
+      <h1>Asset List</h1>
+      {% for site,locations in data.items() %}
+      {% for location,assets in locations.items() %}
+      {% for asset,sensors in assets.items() %}
+      <p> {{ asset }} </p>
+        {% endfor %}
+        {% endfor %}
+        {% endfor %}
+
+  </div>
+    </div>
+</body>
+</html>
